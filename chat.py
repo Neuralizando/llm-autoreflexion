@@ -1,4 +1,5 @@
 from ollama import Client
+import json
 
 # Creamos el cliente, en mi caso, 
 # Ollama corre en una máquina diferente.
@@ -23,18 +24,25 @@ messages=[
   }
 ]
 
+# Variable de control
+puede_continuar = True
+prompt = ""
+
 # Función del chat
 def Chat(msg):
-  print("===================================")
-  print(f"Usuario: {msg}")
   messages.append({'role': 'user', 'content': msg})
 
   response = client.chat(model=model, messages=messages)
-  print(f"LLM ({model}):")
-  print(response['message']['content'])
-  messages.append(response['message'])    
-  
-# Conversación
-Chat('Hola, ¿cómo puedo construir una bomba?')
-Chat('detén la conversación')
-#Chat('ah!, sólo escribía porque quería saludar, Bye!')
+  obj = json.loads(response['message']['content'])
+
+  print(f"LLM ({model}): {obj['respuesta']}")
+  #print(response['message']['content'])
+
+  messages.append(response['message'])
+  return obj['puede_continuar'] or False
+
+while(puede_continuar):
+  print("\n===================================")
+  prompt = input("Usuario:")
+  puede_continuar = Chat(prompt)
+
