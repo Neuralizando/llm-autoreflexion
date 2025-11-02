@@ -4,7 +4,7 @@ import json
 # Creamos el cliente, en mi caso, 
 # Ollama corre en una máquina diferente.
 client = Client(
-  host='http://192.168.1.81:11434'
+  host='http://localhost:11434'
 )
 
 # Verificamos que el modelo esté instalado
