@@ -1,2 +1,7 @@
 # llm-autoreflexion
-Demo de implementación de autoreflexion
+Demo de implementación de autoreflexion.
+
+# Requisitos
+```
+pip install ollama
+```
