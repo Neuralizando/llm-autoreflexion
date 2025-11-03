@@ -16,6 +16,7 @@ file  = open('system.txt', mode="r", encoding="utf-8")
 system_prompt = file.read()
 print("======== PROMPT DE SISTEMA ========")
 print(system_prompt)
+print("\n===================================")
 
 messages=[
   {
@@ -39,10 +40,9 @@ def Chat(msg):
   #print(response['message']['content'])
 
   messages.append(response['message'])
-  return obj['puede_continuar'] or False
+  return obj['puede_continuar'].lower() == "true"
 
 while(puede_continuar):
-  print("\n===================================")
   prompt = input("Usuario:")
   puede_continuar = Chat(prompt)
 
