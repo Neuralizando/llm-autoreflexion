@@ -37,6 +37,7 @@ def Chat(msg):
   obj = json.loads(response['message']['content'])
 
   print(f"LLM ({model}): {obj['respuesta']}")
+  print("\n")
   #print(response['message']['content'])
 
   messages.append(response['message'])
