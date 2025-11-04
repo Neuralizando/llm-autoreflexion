@@ -9,7 +9,8 @@ client = Client(
 
 # Verificamos que el modelo esté instalado
 model = "cogito:3b"
-client.pull(model)
+# client.pull(model) # No funciona, usar desde la consola 
+# ollama pull cogito:3b
 
 # Cargamos el Prompt de Sistema
 file  = open('system.txt', mode="r", encoding="utf-8")
